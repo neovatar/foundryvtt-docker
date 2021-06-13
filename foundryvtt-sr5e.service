@@ -1,0 +1,19 @@
+[Unit]
+Description=FoundryVTT Docker Container for instance sr5e
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStartPre=-/usr/bin/docker stop foundryvtt-sr5e
+ExecStartPre=-/usr/bin/docker rm foundryvtt-sr5e
+ExecStart=/usr/bin/docker run \
+  --rm \
+  --name foundryvtt-sr5e \
+  -p 30001:30000 \
+  -h foundryvtt-sr5e \
+  -v /var/foundryvtt-sr5e/data:/var/foundryvtt/data \
+  foundryvtt:latest
+ExecStop=-/usr/bin/docker stop foundryvtt-sr5e
+
+[Install]
+WantedBy=multi-user.target

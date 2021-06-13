@@ -1,0 +1,19 @@
+[Unit]
+Description=FoundryVTT Docker Container for instance rpg
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStartPre=-/usr/bin/docker stop foundryvtt-rpg
+ExecStartPre=-/usr/bin/docker rm foundryvtt-rpg
+ExecStart=/usr/bin/docker run \
+  --rm \
+  --name foundryvtt-rpg \
+  -p 30000:30000 \
+  -h foundryvtt-rpg \
+  -v /var/foundryvtt-rpg/data:/var/foundryvtt/data \
+  foundryvtt:latest
+ExecStop=-/usr/bin/docker stop foundryvtt-rpg
+
+[Install]
+WantedBy=multi-user.target

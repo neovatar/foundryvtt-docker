@@ -11,6 +11,7 @@ rsync -rlptgo \
   --delete \
   --delete-excluded \
   --exclude='/.git' \
-  --filter="dir-merge,- .gitignore" \
+  --exclude='/.gitignore' \
+  --exclude='/data' \
  . $SSH_DEST:$DEST_DIR
  

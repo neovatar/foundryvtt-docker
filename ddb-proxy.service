@@ -1,0 +1,20 @@
+[Unit]
+Description=Self hosted DND Beyond proxy
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStartPre=-/usr/bin/docker stop ddb-proxy
+ExecStartPre=-/usr/bin/docker rm ddb-proxy
+ExecStart=/usr/bin/docker run \
+  --rm \
+  --name ddb-proxy \
+  -p 30002:3000 \
+  -h ddb-proxy \
+  --init  \
+  --user nobody:nogroup \
+  ghcr.io/mrprimate/ddb-proxy:0.0.10
+ExecStop=-/usr/bin/docker stop ddb-proxy
+
+[Install]
+WantedBy=multi-user.target

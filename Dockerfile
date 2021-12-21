@@ -1,4 +1,4 @@
-ARG FVTT_VERSION=0.8.6
+ARG FVTT_VERSION=0.8.9
 ARG FVTT_INSTALL_DIR=/var/foundryvtt/foundryvtt-${FVTT_VERSION}
 ARG FVTT_DATA_DIR=/var/foundryvtt/data
 ARG FVTT_UID

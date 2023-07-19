@@ -1,10 +1,10 @@
-ARG FVTT_VERSION=10.288
+ARG FVTT_VERSION=11.305
 ARG FVTT_INSTALL_DIR=/var/foundryvtt/foundryvtt-${FVTT_VERSION}
 ARG FVTT_DATA_DIR=/var/foundryvtt/data
 ARG FVTT_UID
 ARG FVTT_GUID
 
-FROM node:14-slim as unzip
+FROM node:18-slim as unzip
 ARG FVTT_VERSION
 ARG FVTT_INSTALL_DIR
 ARG FVTT_ZIP=FoundryVTT-${FVTT_VERSION}.zip
@@ -18,7 +18,7 @@ RUN apt-get update \
 RUN mkdir -p ${FVTT_INSTALL_DIR} \
  && unzip /tmp/${FVTT_ZIP} -d ${FVTT_INSTALL_DIR}
 
-FROM node:14-slim
+FROM node:18-slim
 ARG FVTT_VERSION
 ARG FVTT_INSTALL_DIR
 ARG FVTT_DATA_DIR

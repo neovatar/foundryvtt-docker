@@ -13,7 +13,7 @@ ExecStart=/usr/bin/docker run \
   -h ddb-proxy \
   --init  \
   --user nobody:nogroup \
-  ghcr.io/mrprimate/ddb-proxy:0.0.19
+  ghcr.io/mrprimate/ddb-proxy:0.0.25
 ExecStop=-/usr/bin/docker stop ddb-proxy
 
 [Install]

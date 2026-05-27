@@ -1,14 +1,13 @@
-ARG FVTT_VERSION=12.343
-# ARG FVTT_VERSION=13.346
+ARG FVTT_VERSION
 ARG FVTT_INSTALL_DIR=/var/foundryvtt/foundryvtt-${FVTT_VERSION}
 ARG FVTT_DATA_DIR=/var/foundryvtt/data
 ARG FVTT_UID
 ARG FVTT_GUID
 
-FROM node:20-slim AS unzip
+FROM node:24-slim AS unzip
 ARG FVTT_VERSION
 ARG FVTT_INSTALL_DIR
-ARG FVTT_ZIP=FoundryVTT-${FVTT_VERSION}.zip
+ARG FVTT_ZIP=FoundryVTT-Node-${FVTT_VERSION}.zip
 
 COPY download/${FVTT_ZIP} /tmp/${FVTT_ZIP}
 
@@ -19,7 +18,7 @@ RUN apt-get update \
 RUN mkdir -p ${FVTT_INSTALL_DIR} \
  && unzip /tmp/${FVTT_ZIP} -d ${FVTT_INSTALL_DIR}
 
-FROM node:20-slim
+FROM node:24-slim
 ARG FVTT_VERSION
 ARG FVTT_INSTALL_DIR
 ARG FVTT_DATA_DIR
@@ -44,5 +43,5 @@ USER foundry
 
 EXPOSE 30000
 
-# CMD  ["node", "./main.js"]
-CMD  ["node", "./resources/app/main.js"]
+CMD  ["node", "./main.js"]
+# CMD  ["node", "./resources/app/main.js"]

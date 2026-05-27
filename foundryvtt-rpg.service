@@ -9,10 +9,10 @@ ExecStartPre=-/usr/bin/docker rm foundryvtt-rpg
 ExecStart=/usr/bin/docker run \
   --rm \
   --name foundryvtt-rpg \
-  -p 30000:30000 \
+  -p 127.0.0.1:30000:30000 \
   -h foundryvtt-rpg \
   -v /var/foundryvtt-rpg/data:/var/foundryvtt/data \
-  foundryvtt:v12
+  foundryvtt:13
 ExecStop=-/usr/bin/docker stop foundryvtt-rpg
 
 [Install]

@@ -2,7 +2,8 @@
 set -euo pipefail
 
 IMAGE_NAME=$(cat IMAGENAME)
-IMAGE_TAG=$(cat BUILDTAG)
+#IMAGE_TAG=$(cat BUILDTAG)
+IMAGE_TAG=${1:-v13}
 
 # docker run \
 #   --rm \
@@ -22,4 +23,5 @@ docker run \
 -v $(pwd)/data:/var/foundryvtt/data \
 -v $(pwd)/../neon-city-overdrive-unofficial:/var/foundryvtt/data/Data/systems/neon-city-overdrive-unofficial \
 -v $(pwd)/../FUx-Dice-Roller:/var/foundryvtt/data/Data/modules/fux-dice-roller \
+-v $(pwd)/../advanced-drawing-tools:/var/foundryvtt/data/Data/modules/advanced-drawing-tools \
 "${IMAGE_NAME}:${IMAGE_TAG}"

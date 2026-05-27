@@ -9,7 +9,7 @@ ExecStartPre=-/usr/bin/docker rm ddb-proxy
 ExecStart=/usr/bin/docker run \
   --rm \
   --name ddb-proxy \
-  -p 30002:3000 \
+  -p 127.0.0.1:30002:3000 \
   -h ddb-proxy \
   --init  \
   --user nobody:nogroup \

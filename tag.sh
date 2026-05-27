@@ -1,7 +1,13 @@
 #!/bin/bash
 set -euo pipefail
 
-IMAGE_NAME=$(cat IMAGENAME)
-IMAGE_TAG=$(cat BUILDTAG)
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <tag>"
+  exit 1
+fi
 
-docker tag "${IMAGE_NAME}:${IMAGE_TAG}" "${IMAGE_NAME}:v12"
+IMAGE_NAME=foundryvtt
+TAG="${1}"
+MAJOR_TAG="${TAG%.*}"
+
+docker tag "${IMAGE_NAME}:${TAG}" "${IMAGE_NAME}:${MAJOR_TAG}"

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-IMAGE_NAME=foundyvtt
+IMAGE_NAME=foundryvtt
 IMAGE_TAG=${1:-13}
 
 docker run \
